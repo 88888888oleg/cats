@@ -1,4 +1,5 @@
 import 'package:cats/features/cat_page/bloc/find_cats_bloc.dart';
+import 'package:cats/features/cat_page/widgets/error_cat_widget.dart';
 import 'package:cats/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,9 @@ class CatImageWidget extends StatelessWidget {
     return BlocBuilder<FindCatsBloc, FindCatsState>(
       builder: (context, state) {
         return state.maybeMap(
+          error: (_) {
+            return const ErrorCatWidget();
+          },
           loaded: (state) {
             return Stack(
               children: [
@@ -44,9 +48,7 @@ class CatImageWidget extends StatelessWidget {
                       );
                     },
                     errorBuilder: (context, error, stackTrace) {
-                      return Image.asset(
-                        Assets.images.errorCat.path,
-                      );
+                      return const ErrorCatWidget();
                     },
                   ),
                 ),
