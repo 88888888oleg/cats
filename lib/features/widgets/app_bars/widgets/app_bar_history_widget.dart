@@ -1,5 +1,5 @@
 import 'package:cats/config/palette.dart';
-import 'package:cats/features/settings/settings_page.dart';
+import 'package:cats/features/history_page/history_page.dart';
 import 'package:cats/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

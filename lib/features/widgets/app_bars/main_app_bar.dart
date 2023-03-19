@@ -1,8 +1,8 @@
 import 'package:cats/config/palette.dart';
-import 'package:cats/features/widgets/app_bar_arrow_back_widget.dart';
-import 'package:cats/features/widgets/app_bar_title_widget.dart';
+import 'package:cats/features/widgets/app_bars/widgets/app_bar_arrow_back_widget.dart';
+import 'package:cats/features/widgets/app_bars/widgets/app_bar_title_widget.dart';
 import 'package:cats/features/widgets/app_bars/base_app_bar.dart';
-import 'package:cats/features/widgets/app_bar_history_widget.dart';
+import 'package:cats/features/widgets/app_bars/widgets/app_bar_history_widget.dart';
 import 'package:flutter/material.dart';
 
 class MainAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -45,7 +45,11 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: [
         Center(
-          child: needShowHistoryButton ? const AppBarHistoryWidget() : null,
+          child: needShowHistoryButton
+              ? const AppBarHistoryWidget()
+              : const SizedBox(
+                  width: 50,
+                ),
         ),
       ],
     );
