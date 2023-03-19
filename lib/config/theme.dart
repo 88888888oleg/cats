@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 class Themes {
   static ThemeData light = ThemeData(
+    scaffoldBackgroundColor: Palette.cultured,
     primarySwatch: Palette.blue,
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(

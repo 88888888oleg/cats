@@ -15,12 +15,15 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
-  "key": "other",
+  "app_title": "Cats",
   "back": "Back",
   "cats_page_title": "Cats...",
+  "history_page_title": "History",
+  "history_page_button_title": "Delete history",
   "start_text": "Cats nice!",
   "button_text": "Get more cats...",
-  "loading_text": "Loading..."
+  "loading_text": "Loading...",
+  "load_failure_default": "Something went wrong"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
 }

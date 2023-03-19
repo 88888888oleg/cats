@@ -3,13 +3,17 @@ import 'package:cats/config/theme.dart';
 import 'package:cats/features/cat_page/cats_page.dart';
 import 'package:cats/lang/gen/codegen_loader.g.dart';
 import 'package:cats/lang/gen/locale_keys.g.dart';
+import 'package:cats/services/adaptors_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Hive.initFlutter();
+  AdaptorsService.registerAdaptors();
 
   Bloc.observer = AppBlocObserver();
   runApp(
@@ -42,7 +46,7 @@ class CatsApp extends StatelessWidget {
           child: child!,
         );
       },
-      title: LocaleKeys.key.tr(),
+      title: LocaleKeys.app_title.tr(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -51,4 +55,3 @@ class CatsApp extends StatelessWidget {
     );
   }
 }
-
