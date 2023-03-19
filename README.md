@@ -1,5 +1,7 @@
 # cats
 
+- Demo video (<https://youtu.be/Wy9DlrpDfyw>).
+
 - Install (<https://flutter.dev/docs/get-started/install>).
 
 - To verify proper installation
