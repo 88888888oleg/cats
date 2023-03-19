@@ -8,15 +8,15 @@ extension DateTimeExtension on DateTime {
 
   ///  Like this: 12:30pm
   String formatTime() {
-    var t = DateFormat.jm().format(this).toLowerCase().split(' ')
+    final t = DateFormat.jm().format(this).toLowerCase().split(' ')
       ..removeWhere((e) => e == ' ');
-    var r = t.join();
+    final r = t.join();
     return r;
   }
 
   _suffix() {
-    var suffix = "th";
-    var digit = day % 10;
+    String suffix = "th";
+    final digit = day % 10;
     if ((digit > 0 && digit < 4) && (day < 11 || day > 13)) {
       suffix = ["st", "nd", "rd"][digit - 1];
     }

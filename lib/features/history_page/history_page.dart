@@ -3,6 +3,7 @@ import 'package:cats/config/text_styles.dart';
 import 'package:cats/features/history_page/bloc/history_bloc.dart';
 import 'package:cats/features/history_page/repository/history_repository.dart';
 import 'package:cats/features/history_page/widgets/clear_button.dart';
+import 'package:cats/features/history_page/widgets/empty_history_widget.dart';
 import 'package:cats/features/widgets/app_bars/main_app_bar.dart';
 import 'package:cats/lang/gen/locale_keys.g.dart';
 import 'package:cats/utils/extensions/date_time_extension.dart';
@@ -43,31 +44,39 @@ class HistoryPage extends StatelessWidget {
                   );
                 },
                 loaded: (historyFacts) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 6.0,
-                    ),
-                    itemCount: historyFacts.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(
-                          '   ${index + 1}. ${historyFacts[index].text}',
-                          style:
-                              TextStyles.style16w400(Palette.eerieBlack, 1.2),
-                        ),
-                        subtitle: Text(
-                          historyFacts[index].date.formatDate(),
-                          style: TextStyles.style12w400ul(Palette.cadetGrey),
-                        ),
-                      );
-                    },
-                  );
+                  return historyFacts.isEmpty
+                      ? const EmptyHistoryWidget()
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.only(
+                            top: 10.0,
+                            right: 10.0,
+                            left: 10.0,
+                            bottom: 75,
+                          ),
+                          itemCount: historyFacts.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(
+                                '   ${index + 1}. ${historyFacts[index].text}',
+                                style: TextStyles.style16w400(
+                                    Palette.eerieBlack, 1.2),
+                              ),
+                              subtitle: Text(
+                                historyFacts[index].date.formatDate(),
+                                style:
+                                    TextStyles.style12w400ul(Palette.cadetGrey),
+                              ),
+                            );
+                          },
+                        );
                 },
                 error: (error) {
-                  return Text(
-                    error,
-                    style: TextStyles.style18w500ul(Palette.orchidPink),
+                  return Center(
+                    child: Text(
+                      error,
+                      style: TextStyles.style18w500ul(Palette.orchidPink),
+                    ),
                   );
                 },
               );
